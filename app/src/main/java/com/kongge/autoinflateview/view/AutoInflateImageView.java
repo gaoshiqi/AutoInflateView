@@ -1,0 +1,61 @@
+package com.kongge.autoinflateview.view;
+
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.support.annotation.Nullable;
+import android.util.AttributeSet;
+import android.widget.ImageView;
+
+import com.kongge.autoinflateview.R;
+
+/**
+ * author:kongge
+ * date:2018/5/25
+ * layout:
+ * description:
+ */
+
+public class AutoInflateImageView extends ImageView implements IAutoInflateView {
+
+    private String valueId;
+    private String actionId;
+
+    public AutoInflateImageView(Context context) {
+        super(context);
+    }
+
+    public AutoInflateImageView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
+        if (attrs != null) {
+            TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.AutoInflateTextView);
+            valueId = a.getString(R.styleable.AutoInflateTextView_autoViewValueId);
+            actionId = a.getString(R.styleable.AutoInflateTextView_autoViewActionId);
+            a.recycle();
+        }
+    }
+
+    @Override
+    public void setValueId(String valueId) {
+        this.valueId = valueId;
+    }
+
+    @Override
+    public String getValueId() {
+        return valueId;
+    }
+
+    @Override
+    public void setActionId(String actionId) {
+        this.actionId = actionId;
+    }
+
+    @Override
+    public String getActionId() {
+        return actionId;
+    }
+
+    @Override
+    public boolean hasAutoInflateViewChild() {
+        return false;
+    }
+}

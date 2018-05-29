@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hexin="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    >
+    <LinearLayout
+        android:id="@+id/ll_lineContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <com.kongge.autoinflateview.view.AutoInflateImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            hexin:autoViewValueId="img1"
+            android:scaleType="fitXY"
+            />
+        <com.kongge.autoinflateview.view.AutoInflateImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            hexin:autoViewValueId="img2"
+            android:scaleType="fitXY"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            >
+            <com.kongge.autoinflateview.view.AutoInflateTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                hexin:autoViewValueId="title"
+                android:textSize="25dp"
+                android:textColor="#000000"
+                />
+            <com.kongge.autoinflateview.view.AutoInflateTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                hexin:autoViewValueId="content"
+                android:textSize="20dp"
+                android:textColor="#909090"
+                android:layout_marginTop="10dp"
+                />
+            <com.kongge.autoinflateview.view.AutoInflateTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                hexin:autoViewValueId="description"
+                android:textSize="20dp"
+                android:textColor="#909090"
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:background="#90ffffff"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,19 @@
+{
+  "title": {
+    "value" : "测试title1",
+    "color" : "#ff0000",
+    "action" : "jumpTitle"
+  },
+  "content": "测试1content",
+  "description": {
+    "value" : "测试1description",
+    "hide" : "0"
+  },
+  "img1": "http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
+  "img2": {
+    "value" : "http://file02.16sucai.com/d/file/2014/0619/311167f2f92101b05a3e1b772e2a37df.jpg",
+    "hide" : "1"
+  },
+  "action" : "jumpNextPage",
+  "hide" : "0"
+}
