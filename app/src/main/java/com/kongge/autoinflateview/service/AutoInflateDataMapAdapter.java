@@ -114,6 +114,10 @@ public class AutoInflateDataMapAdapter implements IAutoInflateDataAdapter {
         }
         view.setVisibility(visibility);
 
+        // 如果返回的数据里面actionid为空，则以获取本地配置的actionid
+        if (TextUtils.isEmpty(action)) {
+            action = autoInflateDataBean.getActionId();
+        }
         if (clickListener != null && !TextUtils.isEmpty(action)) {
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
