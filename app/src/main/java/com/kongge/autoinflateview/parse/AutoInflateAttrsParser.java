@@ -4,8 +4,8 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.bean.AutoInflateDataBean;
-import com.kongge.autoinflateview.parse.IAutoInflateViewParser;
 import com.kongge.autoinflateview.view.IAutoInflateView;
 
 import java.util.HashMap;
@@ -21,7 +21,7 @@ import java.util.Map;
 public class AutoInflateAttrsParser implements IAutoInflateViewParser {
 
     @Override
-    public Map<String, AutoInflateDataBean> parseViewWithConfig(View rootView, Object config) {
+    public Map<String, AutoInflateDataBean> parseViewWithConfig(View rootView, Object config, AutoInflateProtocolBean autoInflateProtocolBean) {
         if (rootView == null) {
             return null;
         }
@@ -55,6 +55,7 @@ public class AutoInflateAttrsParser implements IAutoInflateViewParser {
         if (beanMap != null && !TextUtils.isEmpty(valueId)) {
             AutoInflateDataBean bean = new AutoInflateDataBean();
             bean.setValueId(valueId);
+            bean.setDataId(valueId);
             bean.setActionId(autoInflateView.getActionId());
             bean.setContentView((View) autoInflateView);
             beanMap.put(valueId, bean);

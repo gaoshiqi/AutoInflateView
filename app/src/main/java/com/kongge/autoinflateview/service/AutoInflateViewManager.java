@@ -2,6 +2,7 @@ package com.kongge.autoinflateview.service;
 
 import android.view.View;
 
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.bean.AutoInflateDataBean;
 import com.kongge.autoinflateview.parse.IAutoInflateViewParser;
 
@@ -18,6 +19,8 @@ public class AutoInflateViewManager {
 
     private View rootView;
 
+    private Object configObj;
+
     private Map<String, AutoInflateDataBean> mAutoInflateDataBeanMap = null;
 
     private IAutoInflateDataAdapter mAutoInflateDataAdapter;
@@ -28,18 +31,27 @@ public class AutoInflateViewManager {
 
     private IAutoInflateViewParser mAutoInflateViewParser;
 
+    private AutoInflateProtocolBean mAutoInflateProtocolBean;
+
     public AutoInflateViewManager() {
 
     }
 
-    public void init(View view, Object config) {
-        if (view == null) {
+    public void init() {
+        if (rootView == null) {
             return;
         }
-        rootView = view;
         if (mAutoInflateViewParser != null) {
-            mAutoInflateDataBeanMap = mAutoInflateViewParser.parseViewWithConfig(view, config);
+            mAutoInflateDataBeanMap = mAutoInflateViewParser.parseViewWithConfig(rootView, configObj, mAutoInflateProtocolBean);
         }
+    }
+
+    public void setRootView(View rootView) {
+        this.rootView = rootView;
+    }
+
+    public void setConfigObj(Object configObj) {
+        this.configObj = configObj;
     }
 
     public void setData(Object objData) {
@@ -47,9 +59,9 @@ public class AutoInflateViewManager {
             return;
         }
         if (mAutoInflateDataAdapter != null) {
-            mAutoInflateDataAdapter.setRootViewData(rootView, objData, mRootViewClickListener);
+            mAutoInflateDataAdapter.setRootViewData(rootView, objData,configObj, mRootViewClickListener, mAutoInflateProtocolBean);
             for (String valueId : mAutoInflateDataBeanMap.keySet()) {
-                mAutoInflateDataAdapter.setAutoInfalteViewData(mAutoInflateDataBeanMap.get(valueId), objData, mAutoInflateViewClickListener);
+                mAutoInflateDataAdapter.setAutoInfalteViewData(mAutoInflateDataBeanMap.get(valueId), objData, mAutoInflateViewClickListener, mAutoInflateProtocolBean);
             }
         }
 
@@ -69,5 +81,9 @@ public class AutoInflateViewManager {
 
     public void setAutoInflateViewParser(IAutoInflateViewParser mAutoInflateViewParser) {
         this.mAutoInflateViewParser = mAutoInflateViewParser;
+    }
+
+    public void setAutoInflateProtocolBean(AutoInflateProtocolBean autoInflateProtocolBean) {
+        this.mAutoInflateProtocolBean = autoInflateProtocolBean;
     }
 }

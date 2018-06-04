@@ -2,8 +2,8 @@ package com.kongge.autoinflateview.service;
 
 import android.view.View;
 
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.bean.AutoInflateDataBean;
-import com.kongge.autoinflateview.view.IAutoInflateView;
 
 /**
  * author:kongge
@@ -14,8 +14,8 @@ import com.kongge.autoinflateview.view.IAutoInflateView;
 
 public interface IAutoInflateDataAdapter {
 
-    void setRootViewData(View rootView, Object objData, OnRootViewClickListener clickListener);
+    void setRootViewData(View rootView, Object objData, Object objConfig, OnRootViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean);
 
-    void setAutoInfalteViewData(AutoInflateDataBean autoInflateDataBean, Object objData, OnAutoInflateViewClickListener clickListener);
+    void setAutoInfalteViewData(AutoInflateDataBean autoInflateDataBean, Object objData, OnAutoInflateViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean);
 
 }

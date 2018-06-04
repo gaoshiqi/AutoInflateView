@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
 import com.kongge.autoinflateview.bean.AutoInflateDataBean;
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.parse.AutoInflateAttrsParser;
 import com.kongge.autoinflateview.service.AutoInflateCtrl;
 import com.kongge.autoinflateview.service.AutoInflateDataMapAdapter;
@@ -43,12 +44,12 @@ public class DemoOneActivity extends Activity {
         // 测试自定义解析
         IAutoInflateDataAdapter autoInflateDataAdapter = new IAutoInflateDataAdapter() {
             @Override
-            public void setRootViewData(View rootView, Object objData, OnRootViewClickListener clickListener) {
+            public void setRootViewData(View rootView, Object objData, Object objConfig, OnRootViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean) {
 
             }
 
             @Override
-            public void setAutoInfalteViewData(AutoInflateDataBean bean, Object objData, OnAutoInflateViewClickListener clickListener) {
+            public void setAutoInfalteViewData(AutoInflateDataBean bean, Object objData, OnAutoInflateViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean) {
                 if (bean == null || objData == null || !(objData instanceof Map)) {
                     return;
                 }

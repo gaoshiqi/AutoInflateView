@@ -1,72 +1,19 @@
 {
-  "msg":"1",
-  "tip":"",
-  "data":[
-    {
-      "title":"测试title1",
-      "content":"测试1content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title2",
-      "content":"测试2content",
-      "img":"http://file02.16sucai.com/d/file/2014/0619/311167f2f92101b05a3e1b772e2a37df.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title3",
-      "content":"测试3content",
-      "img":"http://file02.16sucai.com/d/file/2014/0619/311167f2f92101b05a3e1b772e2a37df.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title4",
-      "content":"测试4content",
-      "img":"http://www.jsrclq.com/UploadFiles/FCK/2016-01/20160105R6XV80FRXJ.png",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title5",
-      "content":"测试5content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title6",
-      "content":"测试6content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title7",
-      "content":"测试7content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title8",
-      "content":"测试8content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title9",
-      "content":"测试9content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title10",
-      "content":"测试10content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    },
-    {
-      "title":"测试title11",
-      "content":"测试11content",
-      "img":"http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
-      "action":"jumpToWeb"
-    }
-  ]
+  "tv_title2": {
+    "value" : "测试title2",
+    "color" : "#ff0000",
+    "action" : "jumpTitle"
+  },
+  "tv_content": "测试1content",
+  "tv_description": {
+    "value" : "测试1description",
+    "hide" : "0"
+  },
+  "iv_one2": "http://img2.cxtuku.com/00/14/60/s2517dacae51.jpg",
+  "iv_two": {
+    "value" : "http://file02.16sucai.com/d/file/2014/0619/311167f2f92101b05a3e1b772e2a37df.jpg",
+    "hide" : "0"
+  },
+  "action" : "jumpNextPage",
+  "hide" : "0"
 }

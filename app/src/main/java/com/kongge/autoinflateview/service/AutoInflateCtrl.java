@@ -3,6 +3,7 @@ package com.kongge.autoinflateview.service;
 
 import android.view.View;
 
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.parse.AutoInflateAttrsParser;
 import com.kongge.autoinflateview.parse.IAutoInflateViewParser;
 
@@ -21,18 +22,12 @@ public class AutoInflateCtrl {
         autoInflateViewManager = new AutoInflateViewManager();
         autoInflateViewManager.setOnRootViewClickListener(builder.mRootViewClickListener);
         autoInflateViewManager.setOnAutoInflateViewClickListener(builder.mAutoInflateViewClickListener);
-        IAutoInflateViewParser parser = builder.mAutoInflateViewParser;
-        if (parser == null) {
-            parser = new AutoInflateAttrsParser();
-        }
-        autoInflateViewManager.setAutoInflateViewParser(parser);
-
-        IAutoInflateDataAdapter adapter = builder.mAutoInflateDataAdapter;
-        if (adapter == null) {
-            adapter = new AutoInflateDataMapAdapter();
-        }
-        autoInflateViewManager.setAutoInflateDataAdapter(adapter);
-        autoInflateViewManager.init(builder.mRootView, builder.mConfigObj);
+        autoInflateViewManager.setAutoInflateProtocolBean(builder.mAutoInflateProtocolBean);
+        autoInflateViewManager.setAutoInflateViewParser(builder.mAutoInflateViewParser);
+        autoInflateViewManager.setAutoInflateDataAdapter(builder.mAutoInflateDataAdapter);
+        autoInflateViewManager.setRootView(builder.mRootView);
+        autoInflateViewManager.setConfigObj(builder.mConfigObj);
+        autoInflateViewManager.init();
     }
 
     public void setData(Object data) {
@@ -54,6 +49,8 @@ public class AutoInflateCtrl {
         private OnAutoInflateViewClickListener mAutoInflateViewClickListener;
 
         private IAutoInflateViewParser mAutoInflateViewParser;
+
+        private AutoInflateProtocolBean mAutoInflateProtocolBean;
 
         public Builder() {
 
@@ -89,7 +86,24 @@ public class AutoInflateCtrl {
             return this;
         }
 
+        public Builder setAutoInflateProtocolBean(AutoInflateProtocolBean bean) {
+            this.mAutoInflateProtocolBean = bean;
+            return this;
+        }
+
         public AutoInflateCtrl build() {
+            if (mAutoInflateProtocolBean == null) {
+                mAutoInflateProtocolBean = new AutoInflateProtocolBean();
+            }
+            if (mAutoInflateViewParser == null) {
+                mAutoInflateViewParser = new AutoInflateAttrsParser();
+            }
+            if (mAutoInflateDataAdapter == null) {
+                mAutoInflateDataAdapter = new AutoInflateDataMapAdapter();
+            }
+            if (mAutoInflateDataAdapter == null) {
+                mAutoInflateDataAdapter = new AutoInflateDataMapAdapter();
+            }
             return new AutoInflateCtrl(this);
         }
 

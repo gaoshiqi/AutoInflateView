@@ -13,5 +13,12 @@
         android:text="Demo1 Test"
         />
 
+    <Button
+        android:id="@+id/btn_activity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Demo2 Test"
+        />
+
 
 </LinearLayout>

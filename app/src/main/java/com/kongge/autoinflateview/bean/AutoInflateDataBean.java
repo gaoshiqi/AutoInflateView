@@ -1,5 +1,6 @@
 package com.kongge.autoinflateview.bean;
 
+import android.text.TextUtils;
 import android.view.View;
 
 /**
@@ -11,11 +12,15 @@ import android.view.View;
 
 public class AutoInflateDataBean {
 
-    private String mValueId;
+    private String mValueId;  // 控件id
 
-    private String mActionId;
+    private String mActionId;  // 点击事件id
 
-    private View mContentView;
+    private String mHide;  // 是否隐藏
+
+    private String mDataId;  // 获取数据id
+
+    private View mContentView;  // 控件
 
     public AutoInflateDataBean() {
     }
@@ -42,5 +47,21 @@ public class AutoInflateDataBean {
 
     public void setContentView(View mView) {
         this.mContentView = mView;
+    }
+
+    public String getHide() {
+        return mHide;
+    }
+
+    public void setHide(String mHide) {
+        this.mHide = mHide;
+    }
+
+    public String getDataId() {
+        return mDataId;
+    }
+
+    public void setDataId(String dataId) {
+        this.mDataId = dataId;
     }
 }

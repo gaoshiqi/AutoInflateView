@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.kongge.autoinflateview.bean.AutoInflateProtocolBean;
 import com.kongge.autoinflateview.bean.AutoInflateDataBean;
-import com.kongge.autoinflateview.view.IAutoInflateView;
 
 import java.util.Map;
 
@@ -21,27 +21,32 @@ import java.util.Map;
 
 public class AutoInflateDataMapAdapter implements IAutoInflateDataAdapter {
 
-    /**
-     * 数据约定key值
-     */
-    public static final String KEY_HIDE = "hide";  // 隐藏
-    public static final String KEY_COLOR = "color";  // 颜色
-    public static final String KEY_VALUE = "value";  // 值
-    public static final String KEY_ACTION = "action";  // 事件id值
+
 
     public static final String VALUE_HIDE_OPEN = "1";  // hide值为1，代表隐藏。默认是显示
 
     @Override
-    public void setRootViewData(final View rootView, final Object objData, final OnRootViewClickListener clickListener) {
+    public void setRootViewData(final View rootView, final Object objData, Object objConfig, final OnRootViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean) {
         if (rootView == null || !(objData instanceof Map)) {
             return;
         }
         String hide = null;
         String action = null;
+        if (objConfig instanceof Map) {
+            Map<String, Object> configMap = (Map) objConfig;
+            hide = (String) configMap.get(autoInflateProtocolBean.getStr_hide());
+            action = (String) configMap.get(autoInflateProtocolBean.getStr_action());
+        }
         if (objData instanceof Map) {
             Map<String, Object> valueMap = (Map) objData;
-            hide = (String) valueMap.get(KEY_HIDE);
-            action = (String) valueMap.get(KEY_ACTION);
+            String hideTemp = (String) valueMap.get(autoInflateProtocolBean.getStr_hide());
+            if (!TextUtils.isEmpty(hideTemp)) {
+                hide = hideTemp;
+            }
+            String actionTemp = (String) valueMap.get(autoInflateProtocolBean.getStr_action());
+            if (!TextUtils.isEmpty(actionTemp)) {
+                action = actionTemp;
+            }
         }
 
         int visibility = View.VISIBLE;
@@ -64,33 +69,33 @@ public class AutoInflateDataMapAdapter implements IAutoInflateDataAdapter {
     }
 
     @Override
-    public void setAutoInfalteViewData(final AutoInflateDataBean autoInflateDataBean, final Object objData, final OnAutoInflateViewClickListener clickListener) {
+    public void setAutoInfalteViewData(final AutoInflateDataBean autoInflateDataBean, final Object objData, final OnAutoInflateViewClickListener clickListener, AutoInflateProtocolBean autoInflateProtocolBean) {
         if (autoInflateDataBean == null || objData == null || !(objData instanceof Map)) {
             return;
         }
-        String valueId = autoInflateDataBean.getValueId();
-        if (TextUtils.isEmpty(valueId)) {
+        String dataId = autoInflateDataBean.getDataId();
+        if (TextUtils.isEmpty(dataId)) {
             return;
         }
         Map<String, Object> dataMap = (Map) objData;
-        final Object valueObj = dataMap.get(valueId);
+        final Object valueObj = dataMap.get(dataId);
         if (valueObj == null) {
             return;
         }
 
         String value = null;
         String textColor = null;
-        String hide = null;
-        String action = null;
+        String hide = autoInflateDataBean.getHide();
+        String action = autoInflateDataBean.getActionId();
 
         if (valueObj instanceof String) {
             value = valueObj.toString();
         } else if (valueObj instanceof Map) {
             Map<String, Object> valueMap = (Map) valueObj;
-            value = (String) valueMap.get(KEY_VALUE);
-            textColor = (String) valueMap.get(KEY_COLOR);
-            hide = (String) valueMap.get(KEY_HIDE);
-            action = (String) valueMap.get(KEY_ACTION);
+            value = (String) valueMap.get(autoInflateProtocolBean.getStr_value());
+            textColor = (String) valueMap.get(autoInflateProtocolBean.getStr_color());
+            hide = (String) valueMap.get(autoInflateProtocolBean.getStr_hide());
+            action = (String) valueMap.get(autoInflateProtocolBean.getStr_action());
         }
 
         View view = autoInflateDataBean.getContentView();
@@ -129,8 +134,6 @@ public class AutoInflateDataMapAdapter implements IAutoInflateDataAdapter {
         } else {
             view.setClickable(false);
         }
-
-
     }
 
 }
